@@ -4,7 +4,7 @@
 
 Summary: IRC to other chat networks gateway
 Name: bitlbee
-Version: 3.2
+Version: 3.2.1
 Release: 1%{?dist}
 License: GPL
 Group: System Environment/Daemons
@@ -21,6 +21,8 @@ BuildRequires: libxslt
 BuildRequires: perl
 BuildRequires: pkgconfig
 BuildRequires: xmlto
+BuildRequires: libpurple-devel
+BuildRequires: libotr-devel
 
 %description
 Bitlbee is an IRC to other chat networks gateway. bitlbee can be used as
@@ -62,8 +64,8 @@ CFLAGS="%{optflags}" ./configure \
     --strip="0" \
     --otr="1" \
     --plugins="1" \
-    --ssl="gnutls"
-#    --purple="1" \
+    --ssl="gnutls" \
+    --purple="1"
 %{__make} %{?_smp_mflags} mandir="%{_mandir}"
 ### FIXME: Documentation needs old sgmltools tool, deprecated.
 #%{__make} -C doc
@@ -92,6 +94,10 @@ CFLAGS="%{optflags}" ./configure \
 %{_localstatedir}/lib/bitlbee/
 
 %changelog
+* Wed Apr 30 2014 Justyn Shull <justyn@justynshull.com> - 3.2.1-1
+- Updated to release 3.2.1
+- Enabled libpurple support
+
 * Tue Feb 12 2013 Dag Wieers <dag@wieers.com> - 3.2-1
 - Updated to release 3.2.
 
